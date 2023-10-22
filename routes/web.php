@@ -22,16 +22,20 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('prototype')->name('prototype.')->group(function(){
-    route::get('/login',function (){
+Route::prefix('prototype')->name('prototype.')->group(function () {
+    route::get('/login', function () {
         return Inertia::render('Prototype/Login');
     })->name('login');
-    route::get('/register',function (){
+    route::get('/register', function () {
         return Inertia::render('Prototype/Register');
     })->name('register');
-    route::get('/dashboard',function (){
+    route::get('/dashboard', function () {
         return Inertia::render('Prototype/Dashboard');
     })->name('dashboard');
+
+    route::get('/subscriptionPlan', function () {
+        return Inertia::render('Prototype/SubscriptionPlan');
+    })->name('subscriptionPlan');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,4 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

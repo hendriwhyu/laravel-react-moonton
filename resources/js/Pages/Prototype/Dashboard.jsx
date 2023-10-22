@@ -1,5 +1,5 @@
 import React from "react";
-import Authenticated from "@/Layouts/Authenticated/index";
+import Authenticated from "@/Layouts/Authenticated/Index";
 import Flickity from "react-flickity-component";
 import { Head } from "@inertiajs/react";
 import FeaturedMovie from "@/Components/FeaturedMovie";
