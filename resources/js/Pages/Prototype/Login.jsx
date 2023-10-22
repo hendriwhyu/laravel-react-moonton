@@ -2,10 +2,10 @@ import TextInput from "@/Components/TextInput";
 import InputLabel from "@/Components/InputLabel";
 import Button from "@/Components/Button";
 import { Link, Head } from "@inertiajs/react";
-export default function Login() {
+const Login = () => {
     return (
         <>
-        <Head title="Login"/>
+            <Head title="Login" />
             <div className="mx-auto max-w-screen min-h-screen bg-black text-white md:px-10 px-3">
                 <div className="fixed top-[-50px] hidden lg:block">
                     <img
@@ -62,12 +62,13 @@ export default function Login() {
                                     Start Watching
                                 </span>
                             </a> */}
-
-                                <Button type="button" variant="primary">
-                                    <span className="text-base font-semibold">
-                                        Start Watching
-                                    </span>
-                                </Button>
+                                <Link href={route("prototype.dashboard")}>
+                                    <Button type="button" variant="primary">
+                                        <span className="text-base font-semibold">
+                                            Start Watching
+                                        </span>
+                                    </Button>
+                                </Link>
                                 <Link href={route("prototype.register")}>
                                     <Button
                                         type="button"
@@ -91,4 +92,5 @@ export default function Login() {
             </div>
         </>
     );
-}
+};
+export default Login;
