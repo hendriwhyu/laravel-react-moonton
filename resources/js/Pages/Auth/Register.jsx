@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import GuestLayout from "@/Layouts/GuestLayout";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/Button";
+import Label from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
+import Button from "@/Components/Button";
+import InputError from "@/Components/InputError";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Register() {
+const Register = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
@@ -21,112 +20,121 @@ export default function Register() {
     }, []);
 
     const handleOnChange = (event) => {
-        setData(
-            event.target.name,
-            event.target.type === "checkbox"
-                ? event.target.checked
-                : event.target.value
-        );
+        return setData(event.target.name, event.target.value);
     };
 
     const submit = (e) => {
         e.preventDefault();
 
+        // console.log(data);
         post(route("register"));
     };
 
     return (
-        <GuestLayout>
-            <Head title="Register" />
-
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError message={errors.name} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
-                    <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
+        <>
+            <Head title="Sign Up" />
+            <div className="mx-auto max-w-screen min-h-screen bg-black text-white md:px-10 px-3">
+                <div className="fixed top-[-50px] hidden lg:block">
+                    <img
+                        src="/images/signup-image.png"
+                        className="hidden laptopLg:block laptopLg:max-w-[450px] laptopXl:max-w-[640px]"
+                        alt=""
                     />
                 </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route("login")}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
-
-                    <PrimaryButton className="ml-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
+                <div className="py-24 flex laptopLg:ml-[680px] laptopXl:ml-[870px]">
+                    <div>
+                        <img src="/images/moonton-white.svg" alt="" />
+                        <div className="my-[70px]">
+                            <div className="font-semibold text-[26px] mb-3">
+                                Sign Up
+                            </div>
+                            <p className="text-base text-[#767676] leading-7">
+                                Explore our new movies and get <br />
+                                the better insight for your life
+                            </p>
+                        </div>
+                        <form className="w-[370px]" onSubmit={submit}>
+                            <div className="flex flex-col gap-6">
+                                <div>
+                                    <Label forInput="name" value="Full Name" />
+                                    <TextInput
+                                        type="text"
+                                        name="name"
+                                        value={data.name}
+                                        placeholder="Your fullname..."
+                                        isFocused={true}
+                                        handleChange={handleOnChange}
+                                        // onChange={handleOnChange}
+                                        required
+                                    />
+                                    <InputError message={errors.name} />
+                                </div>
+                                <div>
+                                    <Label
+                                        forInput="email"
+                                        value="Email Address"
+                                    />
+                                    <TextInput
+                                        type="email"
+                                        name="email"
+                                        value={data.email}
+                                        placeholder="Your Email Address"
+                                        handleChange={handleOnChange}
+                                        required
+                                    />
+                                    <InputError message={errors.email} />
+                                </div>
+                                <div>
+                                    <Label
+                                        forInput="password"
+                                        value="Password"
+                                    />
+                                    <TextInput
+                                        type="password"
+                                        name="password"
+                                        value={data.password}
+                                        placeholder="Your Password"
+                                        handleChange={handleOnChange}
+                                        required
+                                    />
+                                    <InputError message={errors.password} />
+                                </div>
+                                <div>
+                                    <Label
+                                        forInput="password"
+                                        value="Confirm Password"
+                                    />
+                                    <TextInput
+                                        type="password"
+                                        name="password_confirmation"
+                                        value={data.password_confirmation}
+                                        placeholder="Your Password"
+                                        handleChange={handleOnChange}
+                                        required
+                                    />
+                                    <InputError message={errors.password} />
+                                </div>
+                            </div>
+                            <div className="grid space-y-[14px] mt-[30px]">
+                                <Button type="submit" processing={processing}>
+                                    <span className="text-base font-semibold">
+                                        Sign Up
+                                    </span>
+                                </Button>
+                                <Link href={route("login")}>
+                                    <Button variant={"light-outline"}>
+                                        <span className="text-base text-white">
+                                            Sign In to My Account
+                                        </span>
+                                    </Button>
+                                </Link>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </GuestLayout>
+            </div>
+        </>
     );
-}
+};
+
+export default Register;
