@@ -21,8 +21,8 @@ class MovieTableSeeder extends Seeder
                 'slug' => 'the-pandemic-corona',
                 'category' => 'Sci-fi',
                 'video_url' => 'https://youtu.be/uz9OwKHUcC0?si=ZGL3T_R2u7na7Hak',
-                'thumbnail' => 'https://shorturl.at/eorFX',
-                'rating' => 8.2,
+                'thumbnail' => 'https://t.ly/alihR',
+                'rating' => 4.2,
                 'is_featured' => true
             ],
             [
@@ -30,8 +30,8 @@ class MovieTableSeeder extends Seeder
                 'slug' => 'the-godfather',
                 'category' => 'Drama',
                 'video_url' => 'https://youtu.be/UaVTIH8mujA?si=7_APOwOcn9YWEeUH',
-                'thumbnail' => 'https://shorturl.at/lswGY',
-                'rating' => 9.1,
+                'thumbnail' => 'https://t.ly/A0AdI',
+                'rating' => 4.1,
                 'is_featured' => false
             ],
             [
@@ -39,8 +39,8 @@ class MovieTableSeeder extends Seeder
                 'slug' => 'the-godfather-part2',
                 'category' => 'Drama',
                 'video_url' => 'https://youtu.be/OA1ij0alE0w?si=D2arO_O2Nfb937Hj',
-                'thumbnail' => 'https://shorturl.at/nqVXY',
-                'rating' => 7.8,
+                'thumbnail' => 'https://t.ly/oOmT1',
+                'rating' => 4.8,
                 'is_featured' => false
             ],
         ];
