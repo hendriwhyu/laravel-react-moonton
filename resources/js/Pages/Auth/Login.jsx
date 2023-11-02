@@ -64,6 +64,7 @@ const Login = () => {
                                         placeholder="Email Address"
                                         isFocused={true}
                                         handleChange={handleOnChange}
+                                        isError={errors.email}
                                     />
                                     <InputError
                                         message={errors.email}
@@ -82,6 +83,7 @@ const Login = () => {
                                         placeholder="Password"
                                         value={data.password}
                                         handleChange={handleOnChange}
+                                        isError={errors.password}
                                     />
                                     <InputError
                                         message={errors.password}
