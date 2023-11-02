@@ -1,10 +1,12 @@
 import Authenticated from "@/Layouts/Authenticated";
 import Button from "@/Components/Button";
-import { Link } from "@inertiajs/react";
+import { Link, Head, useForm } from "@inertiajs/react";
 import FlashMessage from "@/Components/FlashMessage";
 export default function Index({ auth, flashMessage, movies }) {
+    const { delete: destroy, put } = useForm();
     return (
         <Authenticated auth={auth}>
+            <Head title="List of Movie" />
             {flashMessage?.message && (
                 <FlashMessage message={flashMessage.message} />
             )}
@@ -48,9 +50,29 @@ export default function Index({ auth, flashMessage, movies }) {
                                 </Link>
                             </td>
                             <td>
-                                <Button type="button" variant="danger">
-                                    Edit
-                                </Button>
+                                <div
+                                    onClick={() => {
+                                        movie.deleted_at
+                                            ? put(
+                                                  route(
+                                                      "admin.dashboard.movie.restore",
+                                                      movie.id
+                                                  )
+                                              )
+                                            : destroy(
+                                                  route(
+                                                      "admin.dashboard.movie.destroy",
+                                                      movie.id
+                                                  )
+                                              );
+                                    }}
+                                >
+                                    <Button type="button" variant="danger">
+                                        {movie.deleted_at
+                                            ? "Restore"
+                                            : "Delete"}
+                                    </Button>
+                                </div>
                             </td>
                         </tr>
                     ))}
