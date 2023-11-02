@@ -64,7 +64,7 @@ const Register = () => {
                                         placeholder="Your fullname..."
                                         isFocused={true}
                                         handleChange={handleOnChange}
-                                        // onChange={handleOnChange}
+                                        isError={errors.name}
                                         required
                                     />
                                     <InputError message={errors.name} />
@@ -80,6 +80,7 @@ const Register = () => {
                                         value={data.email}
                                         placeholder="Your Email Address"
                                         handleChange={handleOnChange}
+                                        isError={errors.email}
                                         required
                                     />
                                     <InputError message={errors.email} />
@@ -95,6 +96,7 @@ const Register = () => {
                                         value={data.password}
                                         placeholder="Your Password"
                                         handleChange={handleOnChange}
+                                        isError={errors.password}
                                         required
                                     />
                                     <InputError message={errors.password} />
@@ -110,9 +112,10 @@ const Register = () => {
                                         value={data.password_confirmation}
                                         placeholder="Your Password"
                                         handleChange={handleOnChange}
+                                        isError={errors.password_confirmation}
                                         required
                                     />
-                                    <InputError message={errors.password} />
+                                    <InputError message={errors.password_confirmation} />
                                 </div>
                             </div>
                             <div className="grid space-y-[14px] mt-[30px]">
